@@ -5,11 +5,11 @@ We are calling all developers! Please be sure to unleash your coding prowess by 
 <br />
 <br />
 ![image](https://drive.google.com/uc?export=view&id=1rubf0NqAQ-R-n2t5oaVpTZJPqvX3-myi)
+<br />
+# Light Mode
 ![image](https://drive.google.com/uc?export=view&id=1L7Vh9gH9AzHym-DVzHrUMbFREXSIkb3D)
 
 <br />
-<br />
-# Light Mode
 <br />
 ![image](https://drive.google.com/uc?export=view&id=1L7Vh9gH9AzHym-DVzHrUMbFREXSIkb3D)
 <br />
