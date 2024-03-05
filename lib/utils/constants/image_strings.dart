@@ -1,8 +1,8 @@
 class ShopImages{
 
   //App Logos
-  static const String darkAppLogo = "assets/logos/logo_dark.png";
-  static const String lightAppLogo = "assets/logos/logo_light.png";
+  static const String darkAppLogo = "assets/logos/logodark.png";
+  static const String lightAppLogo = "assets/logos/logolight.png";
 
 
   //Social Logos
@@ -41,12 +41,11 @@ class ShopImages{
   static const String promoBanner2 = "assets/images/banners/banner-2.jpg";
   static const String promoBanner3 = "assets/images/banners/banner-3.jpg";
 
-  //payment success
-  static const String successfullyPaymentIcon = "assets/icons/payment_success.png";
-
   //lottie animation
   static const String docerAnimation = "assets/animation/loader-animation.json";
   static const String successfullyRegisterAnimation = "assets/animation/check_register.json";
+  static const String successfullyPaymentIcon = "assets/animation/payment_success.json";
+
 
 
   //products

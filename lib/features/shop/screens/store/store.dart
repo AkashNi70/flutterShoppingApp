@@ -6,6 +6,7 @@ import 'package:shop/common/widgets/custom_shapes/containers/search_container.da
 import 'package:shop/common/widgets/layouts/grid_layout.dart';
 import 'package:shop/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:shop/common/widgets/texts/section_heading.dart';
+import 'package:shop/features/shop/controllers/category_controller.dart';
 import 'package:shop/features/shop/screens/brand/all_brands.dart';
 import 'package:shop/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:shop/utils/constants/colors.dart';
@@ -19,8 +20,10 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
+
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: ShopAppBar(
           title:
@@ -76,26 +79,14 @@ class StoreScreen extends StatelessWidget {
                 ),
 
                 //tabs
-                bottom: const ShopTabBar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Furniture')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Clothes')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
+                bottom: ShopTabBar(
+                  tabs: categories.map((category) => Tab(child: Text(category.name))).toList(),
                 ),
               ),
             ];
           },
-          body: const TabBarView(
-            children: [
-              ShopCategoryTab(),
-              ShopCategoryTab(),
-              ShopCategoryTab(),
-              ShopCategoryTab(),
-              ShopCategoryTab(),
-            ],
+          body: TabBarView(
+            children: categories.map((category) => ShopCategoryTab(category: category)).toList(),
           ),
         ),
       ),

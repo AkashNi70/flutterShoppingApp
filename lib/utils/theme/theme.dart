@@ -25,7 +25,7 @@ class ShopAppTheme{
       bottomSheetTheme: ShopBottomSheetTheme.shopLightBottomSheetTheme,
       elevatedButtonTheme: ShopElevatedButtonTheme.shopLightElevatedBtnTheme,
       outlinedButtonTheme: ShopOutlinedButtonTheme.shopLightOutlinedBtnTheme,
-      inputDecorationTheme: ShopTextFormFieldTheme.shopLightInputDecorationTheme
+      inputDecorationTheme: ShopTextFormFieldTheme.shopLightInputDecorationTheme,
    );
    static ThemeData shopDarkTheme = ThemeData(
        useMaterial3: true,

@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shop/common/widgets/appbar/appbar.dart';
 import 'package:shop/common/widgets/images/shop_circular_image.dart';
 import 'package:shop/common/widgets/texts/section_heading.dart';
+import 'package:shop/features/personalization/controllers/user_controller.dart';
 import 'package:shop/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:shop/utils/constants/image_strings.dart';
 import 'package:shop/utils/constants/sizes.dart';
+import 'package:shop/common/widgets/shimmers/shimmer.dart';
+
+import 'widgets/change_name.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: const ShopAppBar(
         showBackArrow: true,
@@ -27,8 +33,13 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const ShopCircularImage(image: ShopImages.user, width: 80, height: 80),
-                    TextButton(onPressed: (){}, child: const Text('Change Profile Picture')),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : ShopImages.user;
+                      return controller.imageUploading.value
+                          ?const ShopShimmerEffect(width: 80, height: 80, radius: 80,) : ShopCircularImage(image: image, width: 80, height: 80, isNetworkImage: networkImage.isNotEmpty);
+                    }),
+                    TextButton(onPressed: () => controller.uploadUserProfilePicture(), child: const Text('Change Profile Picture')),
                   ],
                 ),
               ),
@@ -42,8 +53,8 @@ class ProfileScreen extends StatelessWidget {
               const ShopSectionHeading(title: 'Profile Information', showActionButton: false),
               const SizedBox(height: ShopSizes.spaceBtwItems),
 
-              ShopProfileMenu(title: 'Name', value: 'Akash Nishad', onPressed: (){}),
-              ShopProfileMenu(title: 'Username', value: 'akash001', onPressed: (){}),
+              ShopProfileMenu(title: 'Name', value: controller.user.value.fullName, onPressed: () => Get.to(() => const ChangeName())),
+              ShopProfileMenu(title: 'Username', value: controller.user.value.username, onPressed: (){}),
 
               const SizedBox(height: ShopSizes.spaceBtwItems),
               const Divider(),
@@ -53,9 +64,9 @@ class ProfileScreen extends StatelessWidget {
               const ShopSectionHeading(title: 'Personal Information', showActionButton: false),
               const SizedBox(height: ShopSizes.spaceBtwItems),
 
-              ShopProfileMenu(title: 'User ID', value: '123456',icon: Iconsax.copy, onPressed: (){}),
-              ShopProfileMenu(title: 'E-mail', value: 'akash@gmail.com', onPressed: (){}),
-              ShopProfileMenu(title: 'Phone No', value: '6306392645', onPressed: (){}),
+              ShopProfileMenu(title: 'User ID', value: controller.user.value.id,icon: Iconsax.copy, onPressed: (){}),
+              ShopProfileMenu(title: 'E-mail', value: controller.user.value.email, onPressed: (){}),
+              ShopProfileMenu(title: 'Phone No', value: controller.user.value.phoneNumber, onPressed: (){}),
               ShopProfileMenu(title: 'Gender', value: 'Male', onPressed: (){}),
               ShopProfileMenu(title: 'Date of Birth', value: '08 Feb, 2000', onPressed: (){}),
               const Divider(),
@@ -63,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: (){},
+                  onPressed: () => controller.deleteAccountWarningPopup(),
                   child: const Text('Close Account', style: TextStyle(color: Colors.red)),
                 ),
               )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop/features/personalization/controllers/user_controller.dart';
+import 'package:shop/common/widgets/shimmers/shimmer.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/products/cart/cart_menu_icon.dart';
@@ -20,8 +21,24 @@ class ShopHomeAppBar extends StatelessWidget {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(ShopTexts.homeAppbarTitle, style: Theme.of(context).textTheme.labelMedium!.apply(color: ShopColors.grey)),
-          Text(ShopTexts.homeAppbarSubTitle, style: Theme.of(context).textTheme.headlineMedium!.apply(color: ShopColors.white)),
+          Text(ShopTexts.homeAppbarTitle, style: Theme
+              .of(context)
+              .textTheme
+              .labelMedium!
+              .apply(color: ShopColors.grey)),
+          Obx(() {
+            if(controller.profileLoading.value){
+              return const ShopShimmerEffect(width: 80, height: 15,);
+            }else{
+              return Text(controller.user.value.fullName,
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .headlineMedium!
+                      .apply(color: ShopColors.white));
+            }
+
+          }),
         ],
       ),
       actions: [

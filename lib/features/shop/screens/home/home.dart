@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(ShopSizes.defaultSpace),
               child: Column(
                 children: [
-                  const ShopPromoSlider(banners: [ShopImages.promoBanner1,ShopImages.promoBanner2,ShopImages.promoBanner3]),
+                  const ShopPromoSlider(),
                   const SizedBox(height: ShopSizes.spaceBtwSections),
 
                   //Heading

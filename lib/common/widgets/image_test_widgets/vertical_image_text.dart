@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop/common/widgets/images/shop_circular_image.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -10,6 +11,7 @@ class ShopVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = ShopColors.white,
+    this.isNetworkImage = true,
     this.backgroundColor,
     this.onTap,
   });
@@ -17,6 +19,7 @@ class ShopVerticalImageText extends StatelessWidget {
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -29,22 +32,14 @@ class ShopVerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             ///circular icon
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(ShopSizes.md),
-              decoration: BoxDecoration(
-                  color: backgroundColor ??
-                      (dark ? ShopColors.dark : ShopColors.white),
-                  borderRadius: BorderRadius.circular(100)),
-              child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                  color: dark ? ShopColors.light : ShopColors.dark,
-                ),
-              ),
-            ),
+           ShopCircularImage(
+             image: image,
+             fit: BoxFit.fitWidth,
+             padding: ShopSizes.sm * 1.4,
+             isNetworkImage: isNetworkImage,
+             backgroundColor: backgroundColor,
+             overlayColor: dark ? ShopColors.light : ShopColors.dark,
+           ),
 
             //text
             const SizedBox(height: ShopSizes.spaceBtwItems / 2),

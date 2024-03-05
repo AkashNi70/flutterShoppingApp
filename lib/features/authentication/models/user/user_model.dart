@@ -41,7 +41,7 @@ class UserModel {
     return usernameWithPrefix;
   }
 
-  //static function to creation on empty user model.
+  //static function to creation on empty user dummy_data_model.
   static UserModel empty() => UserModel(
       id: '',
       firstName: '',
