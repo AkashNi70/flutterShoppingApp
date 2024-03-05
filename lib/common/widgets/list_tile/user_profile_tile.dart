@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shop/features/personalization/controllers/user_controller.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -14,6 +15,7 @@ class ShopUserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return ListTile(
       leading: const ShopCircularImage(
         image: ShopImages.darkAppLogo,
@@ -21,8 +23,8 @@ class ShopUserProfileTile extends StatelessWidget {
         height: 50,
         padding: 0,
       ),
-      title: Text('Akash Nishad', style: Theme.of(context).textTheme.headlineSmall!.apply(color: ShopColors.white)),
-      subtitle: Text('akash@gmail.com', style: Theme.of(context).textTheme.bodyMedium!.apply(color: ShopColors.white)),
+      title: Text(controller.user.value.fullName, style: Theme.of(context).textTheme.headlineSmall!.apply(color: ShopColors.white)),
+      subtitle: Text(controller.user.value.email, style: Theme.of(context).textTheme.bodyMedium!.apply(color: ShopColors.white)),
       trailing: IconButton(onPressed: onPressed, icon: const Icon(Iconsax.edit, color: ShopColors.white,),),
     );
   }
