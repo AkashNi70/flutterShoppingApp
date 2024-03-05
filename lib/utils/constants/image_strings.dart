@@ -44,8 +44,9 @@ class ShopImages{
   //payment success
   static const String successfullyPaymentIcon = "assets/icons/payment_success.png";
 
-  //save data progress lottie animation
-  static const String docerAnimation = "assets/animation/progress.json";
+  //lottie animation
+  static const String docerAnimation = "assets/animation/loader-animation.json";
+  static const String successfullyRegisterAnimation = "assets/animation/check_register.json";
 
 
   //products

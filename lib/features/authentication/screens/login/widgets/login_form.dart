@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shop/features/authentication/controllers/login/login_controller.dart';
 import 'package:shop/features/authentication/screens/password_configuration/forgot_password.dart';
 import 'package:shop/features/authentication/screens/signup/signup.dart';
 import 'package:shop/navigation_menu.dart';
+import 'package:shop/utils/validators/validation.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -15,7 +17,9 @@ class ShopLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding:
             const EdgeInsets.symmetric(vertical: ShopSizes.spaceBtwSections),
@@ -23,6 +27,8 @@ class ShopLoginForm extends StatelessWidget {
           children: [
             //Email
             TextFormField(
+              controller: controller.email,
+              validator: (value) => ShopValidator.validateEmail(value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
                 labelText: ShopTexts.email,
@@ -30,11 +36,22 @@ class ShopLoginForm extends StatelessWidget {
             ),
             const SizedBox(height: ShopSizes.spaceBtwInputFields),
             //Password
-            TextFormField(
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Iconsax.password_check),
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                validator: (value) => ShopValidator.validatePassword(value),
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Iconsax.password_check),
                   labelText: ShopTexts.password,
-                  suffixIcon: Icon(Iconsax.eye_slash)),
+                  suffixIcon: IconButton(
+                      onPressed: () => controller.hidePassword.value =
+                          !controller.hidePassword.value,
+                      icon: Icon(controller.hidePassword.value
+                          ? Iconsax.eye_slash
+                          : Iconsax.eye)),
+                ),
+              ),
             ),
             const SizedBox(height: ShopSizes.spaceBtwInputFields / 2),
 
@@ -44,7 +61,10 @@ class ShopLoginForm extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    Obx(() => Checkbox(
+                        value: controller.rememberMe.value,
+                        onChanged: (value) => controller.rememberMe.value =
+                            !controller.rememberMe.value)),
                     const Text(ShopTexts.rememberMe),
                   ],
                 ),
@@ -61,7 +81,8 @@ class ShopLoginForm extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() => const NavigationMenu()), child: const Text(ShopTexts.signIn))),
+                    onPressed: () => controller.emailAndPasswordLogin(),
+                    child: const Text(ShopTexts.signIn))),
 
             const SizedBox(height: ShopSizes.spaceBtwItems),
 

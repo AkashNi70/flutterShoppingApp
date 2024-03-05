@@ -5,6 +5,7 @@ import 'package:shop/common/widgets/appbar/appbar.dart';
 import 'package:shop/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:shop/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:shop/common/widgets/texts/section_heading.dart';
+import 'package:shop/data/repositories/authentication/authentication_repository.dart';
 import 'package:shop/features/personalization/screens/address/address.dart';
 import 'package:shop/features/personalization/screens/profile/profile.dart';
 import 'package:shop/features/shop/screens/order/order.dart';
@@ -113,7 +114,7 @@ class SettingScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: (){},
+                      onPressed: () => AuthenticationRepository.instance.logout(),
                       child: const Text('Logout'),
                     ),
                   ),

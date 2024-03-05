@@ -82,7 +82,7 @@ class SignupController extends GetxController {
       ShopLoaders.successSnackBar(title: 'Congratulations', message: 'Your account has been created! verify email to continue.');
 
       //move to verify email screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
 
     } catch (e) {
       //remove loader
