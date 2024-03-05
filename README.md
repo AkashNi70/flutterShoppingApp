@@ -13,4 +13,6 @@ We are calling all developers! Please be sure to unleash your coding prowess by 
 <br />
 <br />
 # Dark Mode
+<br />
+<br />
 ![image](https://drive.google.com/uc?export=view&id=1zRmv19Sqm3o9e21a5A7HvoEWPqBwDezX)
