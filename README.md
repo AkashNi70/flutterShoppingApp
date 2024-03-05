@@ -8,6 +8,8 @@ We are calling all developers! Please be sure to unleash your coding prowess by 
 <br />
 # Light Mode
 ![image](https://drive.google.com/uc?export=view&id=1L7Vh9gH9AzHym-DVzHrUMbFREXSIkb3D)
+![image](https://drive.google.com/uc?export=view&id=1zRmv19Sqm3o9e21a5A7HvoEWPqBwDezX)
+
 
 <br />
 <br />
@@ -17,4 +19,3 @@ We are calling all developers! Please be sure to unleash your coding prowess by 
 # Dark Mode
 <br />
 <br />
-![image](https://drive.google.com/uc?export=view&id=1zRmv19Sqm3o9e21a5A7HvoEWPqBwDezX)
