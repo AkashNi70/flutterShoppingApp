@@ -1,16 +1,13 @@
-# shop
+# Full Stack Flutter E-Commerce App
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Revolutionize Your E-Commerce Experience with Out Flutter eCommerce App
+We are calling all developers! Please be sure to unleash your coding prowess by using our exclusive Flutter E-Commerce solution. Seamlessly integrate a captivating UI with a robust backend featuring secure authentication, real-time Firebase product loading, and efficient local storage for cart and wishlist items.
+<br />
+<br />
+![image](https://drive.google.com/uc?export=view&id=1rubf0NqAQ-R-n2t5oaVpTZJPqvX3-myi)
+<br />
+# Light Mode
+![image](https://drive.google.com/uc?export=view&id=1L7Vh9gH9AzHym-DVzHrUMbFREXSIkb3D)
+<br />
+# Dark Mode
+![image](https://drive.google.com/uc?export=view&id=1zRmv19Sqm3o9e21a5A7HvoEWPqBwDezX)
